@@ -1,0 +1,14 @@
+if a > b : print('a大')
+for i in range(len(a)): print i, a[i]
+break 跳出
+continue跳过单次
+pass 什么也不做
+
+函数 
+def a(n)
+    a, b = 0, 1
+    while a<n:
+        print a,
+        a, b = b, a+b
+        
+a(2000)
