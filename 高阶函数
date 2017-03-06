@@ -1,0 +1,6 @@
+来一个可变参数，要几个函数就来几个
+from math import sqrt
+def same(x,*fs):
+    s=[f(x) for f in fs]
+    return s
+print(same(2,sqrt,abs))
