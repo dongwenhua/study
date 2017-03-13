@@ -3,4 +3,6 @@ git clean -f 清除
 git fetch 相当于是从远程获取最新版本到本地，不会自动merge
 git status 查看状态
 git pull -r 相当于是从远程获取最新版本并merge到本地
+git add (修改文件)
+git commit -m (添加说明)
 git push  推送
