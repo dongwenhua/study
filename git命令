@@ -6,3 +6,4 @@ git pull -r 相当于是从远程获取最新版本并merge到本地
 git add (修改文件)
 git commit -m (添加说明)
 git push  推送
+git checkout 回复某个文件
