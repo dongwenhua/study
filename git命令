@@ -6,4 +6,12 @@ git pull -r 相当于是从远程获取最新版本并merge到本地
 git add (修改文件)
 git commit -m (添加说明)
 git push  推送
-git checkout 回复某个文件
+git checkout 恢复某个文件
+代码存入.bash内
+alias http-proxy-show='env|grep http'
+alias http-proxy-on='export http_proxy=http://127.0.0.1:8123; export https_proxy=http://127.0.0.1:8123; http-proxy-show'
+alias http-proxy-off='unset http_proxy; unset https_proxy'
+.通过下面命令可切换代理
+http-proxy-show
+http-proxy-on
+http-proxy-off
