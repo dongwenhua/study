@@ -1,0 +1,14 @@
+rem set revision={2017-04-06} HEAD
+set revision=HEAD
+svn up art\publish -r %revision%
+pause
+
+#将指定路径的svnlog存入参数
+pushd pirates/src/Source 
+NEW_SOURCE=`svn log --username $SVN_USERNAME --password $SVN_PASSWORD -r ${LAST_SVN_REVISION}:${SVN_REVISION} -q|awk "NR==2{print}"`
+popd
+pushd pirates/src/Plugins 
+NEW_PLUGINS=`svn log --username $SVN_USERNAME --password $SVN_PASSWORD -r ${LAST_SVN_REVISION}:${SVN_REVISION} -q|awk "NR==2{print}"`
+popd
+echo ${NEW_SOURCE}
+echo ${NEW_PLUGINS}
