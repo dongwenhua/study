@@ -2,7 +2,8 @@
 删除文件夹 rmkdir
 brew命令
 brew search 搜索
-
+mv 移动
+rm 删除
 
 【linux权限管理】
 chmod a+x 【命令】获取命令权限
