@@ -49,5 +49,5 @@ ctrl+c返回
 pwd【显示当前路径】
 sh /data/app/jenkins/start.sh 【重启64.201的jenkins】
 
-
+whereis python 显示py安装路径
 
