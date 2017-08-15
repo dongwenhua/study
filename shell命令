@@ -5,6 +5,12 @@ brew search 搜索
 mv 移动
 rm 删除
 
+4. 立即重启
+sudo reboot 
+或者
+sudo shutdown -r now
+
+
 【linux权限管理】
 chmod a+x 【命令】获取命令权限
 chmod XXX  【文件夹】修改文件夹读写权限
