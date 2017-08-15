@@ -55,5 +55,10 @@ ctrl+c返回
 pwd【显示当前路径】
 sh /data/app/jenkins/start.sh 【重启64.201的jenkins】
 
-whereis python 显示py安装路径
+
+linux：
+whereis java
+which java （java执行路径）
+echo $JAVA_HOME
+echo $PATH
 
