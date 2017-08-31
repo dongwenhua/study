@@ -4,6 +4,10 @@ brew命令
 brew search 搜索
 mv 移动
 rm 删除
+新建用户 修改权限 增加sudonopassword
+adduser -m -d /home/dongwenhua -s /bin/bash -p dongwenhuademima dongwenhua
+sudo vi /etc/sudoers.d/admins
+dongwenhua ALL=(ALL) NOPASSWORD: ALL
 
 4. 立即重启
 sudo reboot 
