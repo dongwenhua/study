@@ -94,3 +94,5 @@ which java （java执行路径）
 echo $JAVA_HOME
 echo $PATH
 
+sudo ln -s /usr/local/linux/work  /local/linkwork
+
