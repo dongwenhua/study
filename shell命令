@@ -40,6 +40,24 @@ sudo(提权)
 -rw-rw-rw-   (666) 每个人都有读写的权限 
 -rwxrwxrwx   (777) 每个人都有读写和执行的权限
 
+二、用户组：
+/etc/group
+6、命令 groupadd创建用户组
+groupadd –g 888 node
+创建一个组users，其GID为888
+
+ 
+
+7、命令 gpasswd为组添加用户
+只有root和组管理员能够改变组的成员：
+例：把 user1加入users组
+gpasswd –a user1 users
+例：把 user1退出users组
+gpasswd –d user1 users
+
+改变文件用户组
+
+sudo chgrp -R node logs
 
 vim编辑器
 :w         //保存文件
