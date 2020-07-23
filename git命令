@@ -18,6 +18,8 @@ http-proxy-show
 http-proxy-on
 http-proxy-off
 
+The file will have its original line endings in your working directory.
+git config --global core.autocrlf false
 
 不需要在两次提交中完成此操作，可以添加文件并在单个提交中标记它为可执行文件：
 
