@@ -46,3 +46,13 @@ C:\Temp\TestRepo>git commit -m"Executable!"
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100755 foo.sh
 现在，就有了一个单独的提交文件和一个可执行文件。
+
+
+Git Fork后与源作者同步更新
+git remote -v 
+git remote add upstream git@github.com:xxx/xxx.git
+git fetch upstream
+git merge upstream/master
+git push
+
+
