@@ -11,7 +11,7 @@ git push  推送
 git checkout 恢复某个文件
 代码存入.bash内
 alias http-proxy-show='env|grep http'
-alias http-proxy-on='export http_proxy=http://127.0.0.1:8123; export https_proxy=http://127.0.0.1:8123; http-proxy-show'
+alias http-proxy-on='export http_proxy=http://127.0.0.1:1080; export https_proxy=http://127.0.0.1:1080; http-proxy-show'
 alias http-proxy-off='unset http_proxy; unset https_proxy'
 .通过下面命令可切换代理
 http-proxy-show
