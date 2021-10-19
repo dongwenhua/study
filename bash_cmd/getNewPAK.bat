@@ -30,7 +30,7 @@ set FROM=0
 :: 1=i 2=j 3=k 4=l 5=m 6=n 7=o 8=p 9=q
 set x=n
 for /f "delims=" %%i in (patches.txt) do call set "var=%%var%%%%i"
-for /f "tokens=1,2,3,4,5,6 delims={" %%i in ("%var%") do set "var=%%%x%"
+for /f "tokens=1,2,3,4,5,6 delims={" %%i in ("%var%") do set "var=%%%%x%%"
 for /f "tokens=1,2,3,4,5 delims=," %%i in ("%var%") do (
     set SIZE=%%k 
     set SHA1=%%j
