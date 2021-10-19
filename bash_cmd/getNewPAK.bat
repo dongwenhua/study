@@ -27,39 +27,35 @@ set NUMBER=0
 set FROM=0
 
 %CURLEXE% %MANIFESTJSONURL% | %JQEXE% ".patches" > patches.txt
-:: 1=i 2=j 3=k 4=l 5=m 6=n 7=o 8=p 9=q
-set x=n
-for /f "delims=" %%i in (patches.txt) do call set "var=%%var%%%%i"
-for /f "tokens=1,2,3,4,5,6 delims={" %%i in ("%var%") do set "var=%%%%x%%"
-for /f "tokens=1,2,3,4,5 delims=," %%i in ("%var%") do (
-    set SIZE=%%k 
-    set SHA1=%%j
-    set NUMBER=%%l
-    set FROM=%%i
+for /f "tokens=* delims=" %%i in ('findstr /r ":" patches.txt') do (
+    echo %%i > a.txt
+    findstr /r "from" a.txt && set FROM=%%i
+    findstr /r "sha1" a.txt && set SHA1=%%i
+    findstr /r "size" a.txt && set SIZE=%%i
+    findstr /r "%NUMBER%" a.txt && goto BREAKFOR
 )
-echo %SIZE:~12% 
-echo %SHA1:~13,-1% 
-echo %NUMBER:~10% 
-echo %FROM:~12%
+echo %FROM:~12,-1%
+echo %SHA1:~13,-2%
+echo %SIZE:~12,-1%
 
-set DownUrl="%PAKURL%lastSuccessfulBuild/artifact/pirates-patch_%NUMBER:~10%_P.pak"
+set DownUrl="%PAKURL%lastSuccessfulBuild/artifact/pirates-patch_%NUMBER%_P.pak"
 
 del /f/s/q Paks\*
 
-%CURLEXE% --ssl-no-revoke -L -o "Paks\patch_%NUMBER:~10%_P.pak" %DownUrl%
+%CURLEXE% --ssl-no-revoke -L -o "Paks\patch_%NUMBER%_P.pak" %DownUrl%
 
 del /f/s/q update.info
 
 echo { > update.info
-echo 	"baseversion": %FROM:~12%, >> update.info
-echo 	"curversion": %NUMBER:~10%, >> update.info
+echo 	"baseversion": %FROM:~12,-1%, >> update.info
+echo 	"curversion": %NUMBER%, >> update.info
 echo 	"etag": "\"%ETAG:~1,-1%\"", >> update.info
 echo 	"patches": [ >> update.info
 echo 		{ >> update.info
-echo 			"version": %NUMBER:~10%, >> update.info
-echo 			"pakfilename": "patch_%NUMBER:~10%_P.pak", >> update.info
-echo 			"size": "%SIZE:~12%", >> update.info
-echo 			"sha1": "%SHA1:~13,-1%" >> update.info
+echo 			"version": %NUMBER%, >> update.info
+echo 			"pakfilename": "patch_%NUMBER%_P.pak", >> update.info
+echo 			"size": "%SIZE:~12,-1%", >> update.info
+echo 			"sha1": "%SHA1:~13,-2%" >> update.info
 echo 		} >> update.info
 echo 	] >> update.info
 echo } >> update.info
@@ -69,5 +65,6 @@ adb push update.info /sdcard/Android/data/com.seasungames.pirates/files
 
 del /f/s/q head.txt
 del /f/s/q patches.txt
+del /f/s/q a.txt
 
 pause
